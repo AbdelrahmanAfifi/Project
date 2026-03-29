@@ -1,0 +1,123 @@
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #70e1f5, #ffd194);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    animation: backgroundFade 2s ease-in-out infinite alternate;
+}
+
+@keyframes backgroundFade {
+    0% {
+        background: linear-gradient(135deg, #7c08ce, #fefdfc);
+    }
+    100% {
+        background: linear-gradient(135deg, #f4f3f3, #a60ce3);
+    }
+}
+
+.container {
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    height: 600px;
+    border-radius: 0 80px 0 80px;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #e21ce6;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    margin: 10px 0;
+    width: 90%;
+    box-sizing: border-box;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    margin: 20px 0;
+    width: 100%;
+    background-color: #b12ae7;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #7d1597;
+    transform: scale(1.05);
+}
+
+a {
+    text-decoration: none;
+    color: #8e0ac7;
+    font-size: 14px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.flash {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.flash.success {
+    background-color: #d1fae5;
+    color: #065f46;
+    border: 1px solid #10b981;
+}
+
+.flash.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #ef4444;
+}
+
+#link {
+    text-decoration: none;
+}

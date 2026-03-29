@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="utf-8">
+    <title> تعلم </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='img/Free (1).ico') }}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="{{ url_for('static', filename='css/css2.css') }}" rel="stylesheet">
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+
+
+    <style>
+      
+        .hero-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+      
+        .hero-header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+       
+        .navbar-brand h1 {
+            margin: 0 10px;
+            font-size: 1.8rem;
+        }
+       
+        .btn-secondary {
+            background-color: #667eea;
+            border-color: #667eea;
+        }
+        .btn-secondary:hover {
+            background-color: #764ba2;
+            border-color: #764ba2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">جاري التحميل...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="#" class="navbar-brand p-0" style="display: flex; align-items: center;">
+                    <img src="{{ url_for('static', filename='img/Free (1).ico') }}" alt="Logo" style="width: 50px; border-radius: 50%; margin: 10px;">
+                    <h1 class="m-0"> تعلم </h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto py-0">
+                        <a href="{{ url_for('index') }}" class="nav-item nav-link active">الصفحه الرئيسسه</a>
+                        <a href="{{ url_for('about') }}" class="nav-item nav-link">ماذا نقدم</a>
+                        <a href="{{ url_for('project') }}" class="nav-item nav-link">للتعلم</a>
+                        <a href="{{ url_for('logout') }}" class="nav-item nav-link">تسجيل الخروج</a>
+                        <a href="{{ url_for('index') }}" class="nav-item nav-link">Hello, {{ session['user_name'] }} </a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="container-xxl hero-header">
+                <div class="container px-lg-5">
+                    <div class="row g-5 align-items-center">
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <h1 class="text-white mb-4 animated slideInDown">مرحبًا بكم في منصه تعلم   </h1>
+                            <p class="text-white pb-3 animated slideInDown">نسعى نوفير دروس قصيره  على مبادئ أساسية في التطور والابداع والتعليم</p>
+                            <a href="{{ url_for('project') }}" target="_blank" rel="noopener noreferrer" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill me-3 animated slideInLeft">المزيد من المعلومات</a>
+                        </div>
+                        <div class="col-lg-6 text-center text-lg-start">
+                            <img class="img-fluid animated zoomIn" src="{{ url_for('static', filename='img/hero.png') }}" alt="صورة تعريفية">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+        <!-- Feature Start -->
+        <div class="container-xxl py-5">
+            <div class="container py-5 px-lg-5">
+                <div class="row g-4">
+                    <!-- مثال على ميزة يمكن تعديل محتواها لتناسب "تأسيس الاطفال" -->
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="feature-item bg-light rounded text-center p-4">
+                            <img src="{{ url_for('static', filename='img/icdl2.jpg') }}" alt="نشاط تعليمي" width="200px">
+                            <h5 class="mb-3">ورش عمل تعليمية</h5>
+                            <a href="https://www.youtube.com/watch?v=3kjDExnUnRQ&list=PLBYJSOYbCXnDglV7JlmJKV3dwwVZEZ662" target="_blank" rel="noopener noreferrer" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill animated slideInLeft">مشاهدة الورشة</a>
+                        </div>
+                    </div>
+                    <!-- يمكنك تكرار البلوكات مع تعديل المحتوى لتناسب أهداف الصفحة -->
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="feature-item bg-light rounded text-center p-4">
+                            <img src="{{ url_for('static', filename='img/download1.jpg') }}" alt="نشاط تعليمي" width="170px">
+                            <h5 class="mb-3">أنشطة تفاعلية</h5>
+                            <a href="https://www.youtube.com/watch?v=9Gf5f8xvnis&list=PLroS9tRyoUGpBwtwq8NUI85KnOQdVu7v7" target="_blank" rel="noopener noreferrer" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill animated slideInLeft">اكتشف المزيد</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="feature-item bg-light rounded text-center p-4">
+                            <img src="{{ url_for('static', filename='img/download33.jpg') }}" alt="نشاط تعليمي" width="170px">
+                            <h5 class="mb-3">برامج تطوير مهارات</h5>
+                            <a href="https://www.youtube.com/watch?v=NzyuxPtrRRM&list=PLxIvc-MGOs6ib0oK1z9C46DeKd9rRcSMY" target="_blank" rel="noopener noreferrer" class="btn btn-secondary py-sm-3 px-sm-5 rounded-pill animated slideInLeft">التسجيل الآن</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Feature End -->
+
+        <!-- محتوى إضافي لتقديم الخدمات أو الأنشطة التي تتناسب مع تأسيس الاطفال -->
+        <div class="container-xxl py-5">
+            <div class="container py-5 px-lg-5">
+                <div class="wow fadeInUp" data-wow-delay="0.1s">
+                    <p class="section-title text-secondary justify-content-center"><span></span>برامجنا التعليمية<span></span></p>
+                    <h1 class="text-center mb-5">نساعد المجتمع  على اكتساب المهارات الأساسية</h1>
+                </div>
+                <div class="row g-4">
+                    <!-- مثال على خدمة تعليمية -->
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                        <div class="service-item d-flex flex-column text-center rounded p-4 bg-light">
+                            <h5 class="mb-3">تنمية المهارات الإبداعية</h5>
+                            <ul style="color: #6c757d;">
+                                <li>ورش عمل فنية</li>
+                                <li>أنشطة تفاعلية</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- خدمة ثانية -->
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
+                        <div class="service-item d-flex flex-column text-center rounded p-4 bg-light">
+                            <h5 class="mb-3">الأساسيات الرقمية</h5>
+                            <ul style="color: #6c757d;">
+                                <li>مقدمة في الحاسوب</li>
+                                <li>ألعاب تعليمية</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- خدمة ثالثة -->
+                    <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
+                        <div class="service-item d-flex flex-column text-center rounded p-4 bg-light">
+                            <h5 class="mb-3">التواصل والتعاون</h5>
+                            <ul style="color: #6c757d;">
+                                <li>أنشطة جماعية</li>
+                                <li>مشاريع مشتركة</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5 px-lg-5">
+              <div class="row g-4">
+                <!-- قسم العنوان والتواصل -->
+                <div class="col-md-6 col-lg-4">
+                  <h5 class="mb-4">العنوان</h5>
+                  <p><i class="fa fa-map-marker-alt me-3"></i>Alexandria - 45</p>
+                  <p><i class="fa fa-phone-alt me-3"></i>01227418893</p>
+                  <p><i class="fa fa-envelope me-3"></i>sandy@gmail.com</p>
+                  <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+                </div>
+                <!-- قسم الروابط -->
+                <div class="col-md-6 col-lg-4">
+                  <h5 class="mb-4">جميع اللينكات</h5>
+                  <ul class="list-unstyled">
+                    <li><a class="text-light text-decoration-none" href="{{ url_for('index') }}">الصفحه الرئيسسه</a></li>
+                    <li><a class="text-light text-decoration-none" href="{{ url_for('about') }}">ماذا نقدم</a></li>
+                    <li><a class="text-light text-decoration-none" href="{{ url_for('project') }}">للتعلم</a></li>
+                  </ul>
+                </div>
+                <!-- قسم نبذة عن تأسيس الاطفال -->
+                <div class="col-md-6 col-lg-4">
+                  <h5 class="text-light text-decoration-none">تعلم مع منصه تعلم </h5>
+                  <p>نسعى لبناء جيل مبدع ومتعلم من خلال الأنشطة والبرامج التفاعلية.</p>
+                </div>
+              </div>
+            </div>
+            <!-- شريط الحقوق -->
+            <div class="container-fluid border-top border-light py-3">
+              <div class="container px-lg-5 text-center">
+                <!-- <p class="mb-0">© 2025 جميع الحقوق محفوظة. تصميم وتطوير <a class="text-light fw-bold" href="#">اسم الموقع</a></p> -->
+              </div>
+            </div>
+          </div>
+          
+        <!-- Footer End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/lightbox/js/lightbox.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

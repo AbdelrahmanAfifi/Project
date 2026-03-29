@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تسجيل دخول </title>
+  <style>
+    /* General Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Body Styling */
+    body {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    /* Container Styling */
+    .container {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      max-width: 400px;
+      text-align: center;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transform: scale(0.9);
+      animation: scaleUp 0.6s ease-in-out forwards;
+    }
+
+    /* Title */
+    .container h1 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 26px;
+    }
+
+    /* Input Fields */
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+      transition: 0.3s;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+    }
+
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    input:focus {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    /* Button Styling */
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(90deg, #ff8a00, #e52e71);
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(255, 138, 0, 0.3);
+    }
+
+    /* Link */
+    #link {
+      display: block;
+      margin-top: 20px;
+      color: white;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    #link:hover {
+      text-decoration: underline;
+    }
+
+    /* Flash Messages */
+    .flash {
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .flash.success {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .flash.error {
+      background-color: #dc3545;
+      color: white;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleUp {
+      from {
+        transform: scale(0.9);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+
+    .shake {
+      animation: shake 0.3s ease-in-out;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      50% { transform: translateX(5px); }
+      75% { transform: translateX(-5px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>صفحه تسجيل الدخول </h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="flash {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="post">
+      <input type="text" name="name" placeholder="اسمك " required>
+      <input type="email" name="email" placeholder="الايميل " required>
+      <input type="text" name="phone" placeholder="رقمك " required>
+      <input type="password" name="password" placeholder="باسورد " required>
+      <button type="submit">سجل دخول </button>
+    </form>
+    <a href="{{ url_for('login') }}" id="link">  صفحه الدخول  </a>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+const form = document.querySelector("form");
+const inputs = document.querySelectorAll("input");
+const button = document.querySelector("button");
+
+// اهتزاز الفورم لو فيه خطأ
+form.addEventListener("submit", function (event) {
+    let hasError = false;
+
+    inputs.forEach((input) => {
+        if (input.value.trim() === "") {
+            hasError = true;
+            input.classList.add("shake");
+            setTimeout(() => input.classList.remove("shake"), 300);
+        }
+    });
+
+    if (hasError) {
+        event.preventDefault();
+    }
+});
+
+// تأثير تحرك الزرار لما الماوس يتحرك فوقه
+button.addEventListener("mousemove", (event) => {
+    const rect = button.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    
+    button.style.transform = `translateY(-3px) scale(1.05)`;
+    button.style.boxShadow = `0 10px 20px rgba(255, 138, 0, 0.4)`;
+});
+
+button.addEventListener("mouseleave", () => {
+    button.style.transform = `translateY(0) scale(1)`;
+    button.style.boxShadow = `none`;
+});
+});
+
+</script>
+</body>
+</html>

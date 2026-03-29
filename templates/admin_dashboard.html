@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>لوحة التحكم</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .container {
+            max-width: 90%;
+            margin: auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f2f2f2;
+        }
+        a, button {
+            text-decoration: none;
+            background: #667eea;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        a:hover, button:hover {
+            text-decoration: none;
+
+            background: #582d9d;
+        }
+        .animated-btn {
+            display: inline-block;
+            animation: pulse 1.5s infinite;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" data-aos="fade-up">
+        <h1>مرحباً بك، {{ name }} (أنت مشرف)</h1>
+        
+        <h2>إدارة المستخدمين:</h2>
+        <!-- <a href="{{ url_for('add_user') }}" class="animated-btn">إضافة مستخدم جديد</a> -->
+        <table>
+            <thead>
+                <tr>
+                    <th>الاسم</th>
+                    <th>البريد الإلكتروني</th>
+                    <th>رقم الهاتف</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr data-aos="zoom-in">
+                        <td>{{ user[1] }}</td>
+                        <td>{{ user[2] }}</td>
+                        <td>{{ user[3] }}</td>
+                        <td>
+                            <a href="{{ url_for('delete_user', user_id=user[0]) }}" class="animated-btn">حذف</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>إدارة الكورسات:</h2>
+        <a href="{{ url_for('add_course') }}" class="animated-btn">إضافة دورة جديدة</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>اسم الدورة</th>
+                    <th>الوصف</th>
+                    <th>الصورة</th>
+                    <th>الفيديو</th>
+                    <th>الإجراءات</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for course in courses %}
+                    <tr data-aos="zoom-in">
+                        <td>{{ course[1] }}</td>
+                        <td>{{ course[2] }}</td>
+                        <td><img src="{{ url_for('static', filename=course[3]) }}" alt="صورة الدورة" width="50" height="50"></td>
+                        <td>
+                            {% if course[4] %}
+                                <a href="{{ course[4] }}" target="_blank" class="animated-btn">مشاهدة الفيديو</a>
+                            {% else %}
+                                لا يوجد
+                            {% endif %}
+                        </td>
+                        <td>
+                            <form method="POST" action="{{ url_for('delete_course', course_id=course[0]) }}">
+                                <button type="submit" class="animated-btn">حذف</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script>
+        AOS.init({
+            duration: 1000,
+        });
+    </script>
+</body>
+</html>

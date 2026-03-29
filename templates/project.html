@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+    <meta charset="utf-8">
+    <title> تعلم  </title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="{{ url_for('static', filename='img/Free.png') }}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="{{ url_for('static', filename='css/css2.css') }}" rel="stylesheet">  
+
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/bootstrap-icons.css') }}" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="{{ url_for('static', filename='lib/animate/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='lib/lightbox/css/lightbox.min.css') }}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet">
+</head>
+<style>
+    /* تغيير لون الخلفية الرئيسي للصفحة */
+    .hero-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    /* تنسيق عنوان الهيرو */
+    .hero-header h1 {
+        font-size: 3rem;
+        font-weight: bold;
+    }
+    /* تحسين تنسيق الروابط في النافبار */
+    .navbar-brand h1 {
+        margin: 0 10px;
+        font-size: 1.8rem;
+    }
+    /* زر التصفح الروابط */
+    .btn-secondary {
+        background-color: #667eea;
+        border-color: #667eea;
+    }
+    .btn-secondary:hover {
+        background-color: #764ba2;
+        border-color: #764ba2;
+    }
+</style>
+<body>
+    <style>
+        /* Container for courses */
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+/* Course card styling */
+.course-card {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hover effect for the course card */
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Course image styling */
+.course-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Course name styling */
+.course-card h3 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+/* Course description styling */
+.course-card p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+/* Watch video link styling */
+.course-card a {
+    display: inline-block;
+    background-color: #667eea;
+    color: white;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 0.875rem;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect for the link */
+.course-card a:hover {
+    background-color: #582d9d;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .courses-container {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .courses-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+    </style>
+    <div class="container-xxl bg-white p-0">
+        <!-- Spinner Start -->
+        <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+        <!-- Spinner End -->
+
+
+        <!-- Navbar & Hero Start -->
+        <div class="container-xxl position-relative p-0">
+            <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+                <a href="#" class="navbar-brand p-0" style="display: flex; align-items: center;">
+                    <img src="{{ url_for('static', filename='css/all.css') }}img/Free (1).ico" alt="" style="width: 50px; border-radius: 50%; margin: 10px;">
+                    <h1 class="m-0">تعلم </h1>
+            
+                    <!-- <img src="img/logo.png" alt="Logo"> -->
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+                    <span class="fa fa-bars"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto py-0">
+                        <a href="{{ url_for('index') }}" class="nav-item nav-link active">الصفحه الرئيسسه</a>
+                        <a href="{{ url_for('about') }}" class="nav-item nav-link">ماذا نقدم</a>
+                        <a href="{{ url_for('project') }}" class="nav-item nav-link">للتعلم</a>
+                        <a href="{{ url_for('logout') }}" class="nav-item nav-link">تسجيل الخروج</a>
+
+                        <a href="{{ url_for('index') }}" class="nav-item nav-link">Hello, {{ session['user_name'] }} </a>
+
+                        <!-- <a href="project.html" class="nav-item nav-link">Project</a> -->
+                        <!-- <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                            <div class="dropdown-menu m-0">
+                                <a href="team.html" class="dropdown-item">Our Team</a>
+                                <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                                <a href="404.html" class="dropdown-item">404 Page</a>
+                            </div>
+                        </div> -->
+                        <!-- <a href="contact.html" class="nav-item nav-link">Contact</a> -->
+                    </div>
+                    <!-- <a href="" class="btn rounded-pill py-2 px-4 ms-3 d-none d-lg-block">Get Started</a> -->
+                </div>
+            </nav>
+
+            <div class="container-xxl py-5 bg-primary hero-header">
+                <div class="container my-5 py-5 px-lg-5">
+                    <div class="row g-5 py-5">
+                        <div class="col-12 text-center">
+                            <h1 class="text-white animated slideInDown"> هنا نعرض بعض الفيديوهات القصيره عن تطويرالمهارات  </h1>
+                            <hr class="bg-white mx-auto mt-0" style="width: 90px;">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a class="text-white" href="#">الصفحه الرئيسيه</a></li>
+                                    <!-- <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
+                                    <li class="breadcrumb-item text-white active" aria-current="page">Project</li> -->
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Navbar & Hero End -->
+
+
+        <!-- Projects Start -->
+        <div class="courses-container">
+            {% if courses %}
+                {% for course in courses %}
+                    <div class="course-card">
+                        <img src="{{ course[3] }}" alt="{{ course[1] }}">
+                        <h3>{{ course[1] }}</h3>
+                        <p>{{ course[2] }}</p>
+                        <a href="{{ course[4] }}" target="_blank">Watch Video</a>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No courses available.</p>
+            {% endif %}
+        </div>
+        
+        <!-- Projects End -->
+        
+
+        <!-- Footer Start -->
+        <div class="container-fluid bg-dark text-light footer wow fadeIn" data-wow-delay="0.1s">
+            <div class="container py-5 px-lg-5">
+              <div class="row g-4">
+                <!-- قسم العنوان والتواصل -->
+                <div class="col-md-6 col-lg-4">
+                  <h5 class="mb-4">العنوان</h5>
+                    <p><i class="fa fa-map-marker-alt me-3"></i>Alexandria - 45</p>
+                  <p><i class="fa fa-phone-alt me-3"></i>01227418893</p>
+                  <p><i class="fa fa-envelope me-3"></i>sandy@gmail.com</p>
+                  <div class="d-flex pt-2">
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-twitter"></i></a>
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="btn btn-outline-light btn-social me-2" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="btn btn-outline-light btn-social" href="#"><i class="fab fa-linkedin-in"></i></a>
+                  </div>
+                </div>
+                <!-- قسم الروابط -->
+                <div class="col-md-6 col-lg-4">
+                  <h5 class="mb-4">جميع اللينكات</h5>
+                  <ul class="list-unstyled">
+                    <li><a class="text-light text-decoration-none" href="{{ url_for('index') }}">الصفحه الرئيسسه</a></li>
+                    <li><a class="text-light text-decoration-none" href="{{ url_for('about') }}">ماذا نقدم</a></li>
+                    <li><a class="text-light text-decoration-none" href="{{ url_for('project') }}">للتعلم</a></li>
+                  </ul>
+                </div>
+                <!-- قسم نبذة عن تأسيس الاطفال -->
+                <div class="col-md-6 col-lg-4">
+                 <h5 class="text-light text-decoration-none">تعلم مع منصه تعلم </h5>
+                  <p>نسعى لبناء جيل مبدع ومتعلم من خلال الأنشطة والبرامج التفاعلية.</p>
+                </div>
+              </div>
+            </div>
+            <!-- شريط الحقوق -->
+            <div class="container-fluid border-top border-light py-3">
+              <div class="container px-lg-5 text-center">
+                <!-- <p class="mb-0">© 2025 جميع الحقوق محفوظة. تصميم وتطوير <a class="text-light fw-bold" href="#">اسم الموقع</a></p> -->
+              </div>
+            </div>
+          </div>
+          
+        <!-- Footer End -->
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-secondary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+
+    <!-- JavaScript Libraries -->
+    <script src="{{ url_for('static', filename='js/jquery-3.4.1.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/wow/wow.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/easing/easing.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/waypoints/waypoints.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/counterup/counterup.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/owlcarousel/owl.carousel.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/isotope/isotope.pkgd.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='lib/lightbox/js/lightbox.min.js') }}"></script>
+
+    <!-- Template Javascript -->
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>
